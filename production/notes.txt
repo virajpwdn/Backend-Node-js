@@ -1,0 +1,15 @@
+npm init -y
+
+create server.js :- this is entry point 
+
+create folder src in that folder create app.js which is indexfile it will take all the imports
+
+./app.js: expressconfig (middlewares.reoutes)
+
+expoet app for, app.js
+
+require app from app.js in server.js
+
+start server [listen]
+
+./src/controllers

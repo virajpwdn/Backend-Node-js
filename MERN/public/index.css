@@ -1,0 +1,13 @@
+*{
+    background-color: black;
+    color: white;
+}
+
+form{
+    height: 50vh;
+    width: 100vw;
+    background-color: linen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
