@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profiles</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Container for all user cards */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Create User Button */
+        .create-btn {
+            background-color: #0078d4;
+            color: white;
+            padding: 15px 2px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            /* margin-bottom: 20px; */
+            display: block;
+            width: 200px;
+            height: 3em;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #005a8a;
+        }
+
+        /* Individual card styling */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            /* Remove default link underline */
+            color: inherit;
+            /* Ensure text inherits the correct color */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .top {
+            background-color: #0078d4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .top img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+
+        .bottom {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .bottom h2 {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .bottom h2:first-child {
+            color: #0078d4;
+            font-size: 1.5rem;
+        }
+
+        .bottom h2:last-child {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .top img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .bottom h2:first-child {
+                font-size: 1.2rem;
+            }
+
+            .create-btn {
+                width: 150px;
+                font-size: 1rem;
+            }
+        }
+
+        .likebtn button {
+            padding: 1.5em 2em;
+            background-color: lightgreen;
+            color: black;
+        }
+        .likebtn button:hover{
+            backg
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/create-user-form" class="create-btn">Create User</a>
+        <% alluser.forEach(elem=> { %>
+            <a class="card" href="/user/<%= elem._id %>">
+                <div class="top">
+                    <img src="<%= elem.profileImage %>" alt="<%= elem.username %>'s profile picture">
+                </div>
+                <div class="bottom">
+                    <h2>
+                        <%= elem.username %>
+                    </h2>
+                    <h2>
+                        <%= elem.email %>
+                    </h2>
+                    <h2>
+                        <%= elem.bio %>
+                    </h2>
+                </div>
+            </a>
+            <% }) %>
+    </div>
+    <div class="container">
+        <a href="/create-user-form" class="create-btn">Create User</a>
+        <% alluser.forEach(elem=> { %>
+            <a class="card" href="/user/<%= elem._id %>">
+                <div class="top">
+                    <img src="<%= elem.profileImage %>" alt="<%= elem.username %>'s profile picture">
+                </div>
+                <div class="bottom">
+                    <h2>
+                        <%= elem.username %>
+                    </h2>
+                    <h2>
+                        <%= elem.email %>
+                    </h2>
+                    <h2>
+                        <%= elem.bio %>
+                    </h2>
+                    <div class="likebtn">
+                        <button>
+                            like
+                        </button>
+                    </div>
+                </div>
+            </a>
+            <% }) %>
+    </div>
+</body>
+
+</html>
