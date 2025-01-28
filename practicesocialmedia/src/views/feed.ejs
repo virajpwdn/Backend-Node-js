@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header button {
+            background-color: white;
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .feed-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .profile-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid #4CAF50;
+        }
+
+        .profile-card h1 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .profile-card .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .profile-card button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .profile-card button:hover {
+            background-color: #45a049;
+        }
+
+        .profile-card span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Create User Button -->
+        <button onclick="location.href='/create-user'">Create User</button>
+    </div>
+
+    <div class="feed-container">
+        <% if (Array.isArray(createUser) && createUser.length > 0) { %>
+            <% createUser.forEach(user => { %>
+                <div class="profile-card">
+                    <img src="<%= user.profileImage %>" alt="<%= user.username %>'s profile picture">
+                    <h1><%= user.username %></h1>
+                    <h1><%= user.email %></h1>
+                    <h1><%= user.bio %></h1>
+                    <div class="button-group">
+                        <button>Like <span>0</span></button>
+                        <button onclick="location.href='/profile/<%= user._id %>'">View Profile</button>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No users found.</p>
+        <% } %>
+    </div>
+</body>
+</html>
