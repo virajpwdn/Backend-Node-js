@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPERIO Watches</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fefbe9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            background-color: #a8d0e6;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .navbar .brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar .links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .buttons button {
+            background-color: #c5e1a5;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .main-content {
+            text-align: center;
+            margin: 20px 0;
+            padding: 40px;
+            background-color: #f7caca;
+            border-radius: 10px;
+        }
+        .main-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        /* Lower Section */
+        .lower-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .box {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 30px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .box img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .box p {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .navbar .links {
+                margin-top: 10px;
+            }
+            .lower-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">EMPERIO</div>
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="buttons">
+            <a href="/register"><button>Signup</button></a>
+            <a href="/login"><button>Login</button></a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="main-content">
+        <h2>Discover Our Premium Collection of Watches</h2>
+        <p>Crafted with precision, designed for elegance.</p>
+        <img src="https://via.placeholder.com/800x400" alt="Premium Watches">
+    </div>
+
+    <!-- Product Showcase -->
+    <div class="lower-section">
+        <div class="box">
+            <img src="https://via.placeholder.com/300" alt="Watch Image">
+            <h3>Luxury Watch</h3>
+            <p>Experience timeless elegance with our handcrafted luxury watches.</p>
+        </div>
+        <div class="box">
+            <h3>About Our Watches</h3>
+            <p>Our collection is designed for those who appreciate fine craftsmanship. Featuring Swiss movements, sapphire crystal glass, and premium leather straps.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
