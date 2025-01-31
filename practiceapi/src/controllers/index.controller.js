@@ -44,9 +44,11 @@ module.exports.loginController = async (req, res) => {
     const dcrypt = await bcrypt.compare(password, findEmail.password);
     if (!dcrypt) throw new Error("Invalid credientials");
     const token = jwt.sign({_id: findEmail._id}, process.env.TOKEN_ID);
-    console.log(token);
-    res.cookie("token", token);
-    res.status(200).send(findEmail);
+    // console.log(token);
+    res.status(200).json({
+      user:findEmail,
+      token
+    });
   } catch (error) {
     res.status(400).send("ERROR: " + error.message);
   }
@@ -65,15 +67,19 @@ module.exports.profileController = async (req, res) => {
 
 module.exports.updateController = async (req, res) => {
   try {
-    const cookie = req.cookies;
-    const { token } = cookie;
+    // const { token } = req.headers;
+    const auth = req.headers["authorization"];
+    if(!auth) throw new Error("No token is provided");
+
+    const token = auth.split(" ")[1];
 
     if(!token) throw new Error("Login in again");
 
     const decodedmsg = jwt.verify(token, process.env.TOKEN_ID);
-    const findUser = await User.findById(decodedmsg);
+    req.user = decodedmsg;
+    const findUser = await User.findById(decodedmsg._id);
     if(!findUser) throw new Error("Login in again");
-    res.status(200).send(findUser);
+    res.status(200).json(findUser);
   } catch (error) {
     res.status(400).send("ERROR: " + error.message);
   }
