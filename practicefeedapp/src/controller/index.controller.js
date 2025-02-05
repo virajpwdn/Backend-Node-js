@@ -12,9 +12,7 @@ module.exports.getRegisterController = (req,res)=>{
 
 module.exports.feedController = async (req,res)=>{
     try {
-        isAuthenticate(req)
         const posts = await PostModel.find();
-        console.log(posts);
         res.render("feed", {posts});
     } catch (error) {
         res.status(400).json({message: error.message})
