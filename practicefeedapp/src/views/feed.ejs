@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #1877f2;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        nav h1 {
+            margin: 0;
+        }
+        nav button {
+            background-color: white;
+            color: #1877f2;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #e2e2e2;
+        }
+        .feed-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        .post {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .post img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .post h2 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Facebook</h1>
+        <a href="/user/create-post">
+            <button>New Post</button>
+        </a>
+    </nav>
+
+    <div class="feed-container">
+        <% posts.forEach(post => { %>
+        <div class="post">
+            <div class="top">
+                <img src="<%= post.media %>" alt="Post image">
+            </div>
+            <div class="bottom">
+                <h2><%= post.caption %></h2>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</body>
+</html>
