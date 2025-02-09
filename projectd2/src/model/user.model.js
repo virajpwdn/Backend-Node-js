@@ -71,7 +71,6 @@ userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
 
     this.password = await bcrypt.hash(this.password, 10);
-    console.log("hash password" + this.password);
     next();
   } catch (error) {
     console.error("Error hashing password:", error);
@@ -85,7 +84,7 @@ userSchema.methods.isValidate = async function (plainPassword) {
 };
 
 userSchema.methods.generateJWT = async function (id) {
-  const token = jwt.sign({ id }, config.JWT);
+  const token = jwt.sign({ id }, config.JWT, {expiresIn: "12h"});
   return token;
 };
 

@@ -1,6 +1,6 @@
 const validator = require("validator");
 const UserModel = require("../model/user.model");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 const userValidation = async (req) => {
   const {
@@ -40,23 +40,19 @@ const userValidation = async (req) => {
   if (!genderCheck.includes(gender)) throw new Error("select your gender");
 };
 
+const loginValidation = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) throw new Error("All fields are mandatory");
 
-const loginValidation = async (req) =>{
-  const {email, password} = req.body
-  if(!email || !password) throw new Error("All fields are mandatory");
+  const user = await UserModel.findOne({ email });
+  if (!user) throw new Error("Invalid Credentials");
 
-  const findEmail = await UserModel.findOne({email});
-  if(!findEmail) throw new Error("Invalid Credentials");
+  const isPassword = await user.isValidate(password);
+  if (!isPassword) throw new Error("Invalid Credentials");
 
-  const isPassword = await UserModel.isValidate(password);
-  if(!isPassword) throw new Error("Invalid Credentials");
-
-  const token = await UserModel.generateJWT(findEmail._id);
-  console.log(token);
-  req.cookie("token", token)
-}
-
-
+  const token = await user.generateJWT(user._id);
+  res.cookie("token", token, { maxAge: 7 * 24 * 60 * 60 * 1000 });
+};
 
 module.exports = {
   userValidation,
