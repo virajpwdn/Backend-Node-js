@@ -11,9 +11,9 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    trim: true,
-    unique: true,
     required: true,
+    unique: true,
+    trim: true,
     minlength: [3, "username must be at least 3 characters long"],
     maxlength: [20, "username must be at most 20 characters long"],
   },
@@ -52,3 +52,4 @@ const userSchema = new mongoose.Schema({
 
 
 const UserModel = mongoose.model('user', userSchema)
+module.exports = UserModel
