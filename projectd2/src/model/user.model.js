@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema(
     },
     bio: {
       type: String,
-      default: ["enter a bio to find a match"],
+      default: "enter a bio to find a match",
     },
     gender: {
       type: String,

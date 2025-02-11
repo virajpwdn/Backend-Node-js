@@ -54,7 +54,27 @@ const loginValidation = async (req, res) => {
   res.cookie("token", token, { maxAge: 7 * 24 * 60 * 60 * 1000 });
 };
 
+const editValidation = (req) => {
+  const ALLOWEDFIELDS = [
+    "firstName",
+    "lastName",
+    "username",
+    "skills",
+    "bio",
+    "gender",
+  ];
+
+  const extraFields = Object.keys(req.body).filter(
+    (key) => !ALLOWEDFIELDS.includes(key)
+  );
+  if (extraFields.length > 0)
+    throw new Error(
+      `Invalid fields, ${extraFields.join(", ")} are not allowed`
+    );
+};
+
 module.exports = {
   userValidation,
   loginValidation,
+  editValidation,
 };
