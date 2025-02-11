@@ -19,23 +19,17 @@ module.exports.reqisterController = async (req, res) => {
 
     if (isUserExist) throw new Error("user already exists");
 
-    const hashPassword = await bcrypt.hash(password, 10);
+    const hashPassword = await UserModel.hashPassword(password);
     const user = await UserModel.create({
       username,
       email,
       password: hashPassword,
     });
 
-    const token = jwt.sign(
-      {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
-      config.JWT
-    );
+    const token = user.generateToken();
 
-    // req.cookies("token", token); -> Insteading of sending cookies, best practice is to send token into header and this headers are set via frontend.
+    res.cookie("token", token); 
+    // -> Insteading of sending cookies, best practice is to send token into header and this headers are set via frontend.
 
     res
       .status(200)
@@ -55,13 +49,11 @@ module.exports.loginController = async (req, res) => {
     const user = await UserModel.findOne({ email });
     if (!user) throw new Error("Invalid Credentials");
 
-    const verifyPassword = await bcrypt.compare(password, user.password);
+    const verifyPassword = await UserModel.comparePassword(password, user.password);
     if (!verifyPassword) throw new Error("Invalid Credentials");
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email, password: user.password },
-      config.JWT
-    );
+    const token = user.generateToken();
+    res.cookie("token", token)
 
     console.log(token);
     res
