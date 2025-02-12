@@ -1,0 +1,85 @@
+# MongoDB Indexes
+
+## What Are Indexes in MongoDB?
+Indexes in MongoDB improve query performance by reducing the time complexity of searches. Without indexes, MongoDB performs a **linear search (O(N))**, which is slow for large datasets. Indexes store data in **B-Trees**, which are self-balancing tree structures that enable efficient searches, reducing time complexity to **O(logN)**.
+
+## How Indexes Work in Mongoose
+Mongoose, an ODM for MongoDB, allows defining indexes in a schema to enhance query speed. For instance, if we frequently search for users by `firstName`, adding an index to this field can significantly improve performance.
+
+```javascript
+const userSchema = new mongoose.Schema({
+  firstName: { type: String, index: true },
+  lastName: String,
+  email: String
+});
+```
+
+This index speeds up searches on `firstName` by organizing data efficiently in a B-Tree structure.
+
+## Compound Indexes
+If our application frequently queries using multiple fields, such as `firstName` and `lastName`, a **compound index** is beneficial. A compound index allows queries to efficiently filter by multiple fields together.
+
+### Example of a Compound Index
+```javascript
+const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  email: String
+});
+
+userSchema.index({ firstName: 1, lastName: 1 });
+```
+
+### How Compound Indexes Work
+- The first field (`firstName`) acts as a reference for the others.
+- Queries using `firstName` alone or both `firstName` and `lastName` benefit from this index.
+- Order matters: an index on `{ firstName: 1, lastName: 1 }` optimizes queries for `firstName` alone or `firstName` and `lastName`, but not `lastName` alone.
+
+### Example Queries Leveraging Compound Index
+```javascript
+// Uses index efficiently
+User.find({ firstName: "John" });
+
+// Uses index efficiently
+User.find({ firstName: "John", lastName: "Doe" });
+
+// Does NOT fully utilize index efficiently
+User.find({ lastName: "Doe" });
+```
+
+## Summary of MongoDB Indexes from Documentation
+MongoDB provides multiple types of indexes to optimize query performance:
+
+### 1. **Single Field Index**
+- Indexes a single field.
+- Improves search performance on that field.
+- Example: `{ firstName: 1 }`
+
+### 2. **Compound Index**
+- Indexes multiple fields together.
+- Improves queries involving multiple fields.
+- Example: `{ firstName: 1, lastName: 1 }`
+
+### 3. **Multikey Index**
+- Indexes an array field.
+- Enables efficient searching within arrays.
+- Example: `{ tags: 1 }` where `tags` is an array.
+
+### 4. **Text Index**
+- Enables full-text search.
+- Used for searching textual content efficiently.
+- Example: `{ description: "text" }`
+
+### 5. **Hashed Index**
+- Indexes field values using a hash.
+- Optimized for equality queries (`{ email: "example@example.com" }`).
+- Example: `{ userId: "hashed" }`
+
+### 6. **Geospatial Index**
+- Optimized for location-based queries.
+- Example: `{ location: "2dsphere" }`
+
+## Conclusion
+Indexes significantly improve MongoDB query performance. By understanding different types of indexes (single field, compound, multikey, text, hashed, and geospatial), we can optimize database queries for faster and more efficient searches.
+
+The reason we use compound index is because -> when we frequently want to seach firstName and lastName together at that time it reduces the seach time. if we were not using coumpoud indexs and instaed we were using seperate index for seperate elememts which also takes lot of time to search.
