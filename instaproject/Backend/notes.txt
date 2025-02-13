@@ -1,0 +1,6 @@
+Data Association => creating connection between models
+For this we use populate method for creating data Association
+
+const isUser = await UserModel.findById(user._id).populate('posts')
+
+when we don't use populate then it returns only id of filed rather then document. to get documents and show documents to client we use method popluate and in populate give paramente which you wnat ot show to user

@@ -64,12 +64,16 @@ module.exports.loginController = async (req, res) => {
   }
 };
 
-module.exports.profileController = (req,res)=>{
+module.exports.profileController = async (req,res)=>{
     try {
         const user = req.user;
 
-        res.status(200).json({user:user})
+        const isUser = await UserModel.findById(user._id).populate('posts')
+
+        res.status(200).json({user:isUser})
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 }
+
+// what is cors policy and why it used for integration?

@@ -14,6 +14,7 @@ module.exports.authUser = async (req, res, next) => {
       _id: decode.id,
     });
 
+    if(!user) throw new Error("Not Authorized");
     req.user =
       user; /*  This is not a by-default property, we are creating this over here */
 
