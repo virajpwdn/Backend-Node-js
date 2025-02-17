@@ -1,0 +1,28 @@
+main {
+  height: 100%;
+  width: 100%;
+}
+main .register-view form {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+main .register-view form label {
+  width: 15rem;
+  font-size: 1.1em;
+}
+main .register-view form input {
+  height: 3em;
+  width: 15rem;
+}
+main .register-view form button {
+  padding: 1.5em 3em;
+  background-color: lightgreen;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}/*# sourceMappingURL=registerstyle.css.map */

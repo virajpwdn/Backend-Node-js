@@ -1,0 +1,26 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    padding: 6em;
+    
+    .profile-img{
+        height: 6em;
+        width: 6em;
+        border-radius: 50%;
+        background-color: rebeccapurple;
+    }
+
+    .post-container{
+        display: flex;
+        // align-items: center;
+        // justify-content: center;
+        gap: 1em;
+        margin-top: 2em;
+        .post{
+            height: 18em;
+            width: 20em;
+            background-color: rebeccapurple;
+        }
+    }
+   
+}

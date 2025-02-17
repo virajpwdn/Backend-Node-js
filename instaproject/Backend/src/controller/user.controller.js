@@ -28,14 +28,14 @@ module.exports.reqisterController = async (req, res) => {
 
     const token = user.generateToken();
 
-    res.cookie("token", token); 
+    // res.cookie("token", token); 
     // -> Insteading of sending cookies, best practice is to send token into header and this headers are set via frontend.
 
     res
       .status(200)
       .json({ message: "account created succssfully", user, token });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -53,12 +53,12 @@ module.exports.loginController = async (req, res) => {
     if (!verifyPassword) throw new Error("Invalid Credentials");
 
     const token = user.generateToken();
-    res.cookie("token", token)
+    // res.cookie("token", token)
 
-    console.log(token);
+    // console.log(token);
     res
       .status(200)
-      .json({ message: `${user.username}, you are successfully logged in...` });
+      .json({ message: `${user.username}, you are successfully logged in...`, token });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -76,4 +76,3 @@ module.exports.profileController = async (req,res)=>{
     }
 }
 
-// what is cors policy and why it used for integration?
