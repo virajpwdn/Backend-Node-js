@@ -1,0 +1,34 @@
+.register-main {
+  height: 100vh;
+  width: 100vw;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-main .container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 20em;
+  width: 28em;
+  padding: 2em;
+}
+.register-main .container form input {
+  height: 3em;
+  width: 100%;
+  border-radius: 5px;
+  padding: 1em;
+  border: 1px black solid;
+  outline: none;
+}
+.register-main .container form .btn-submit {
+  padding: 2em 5em;
+  margin-top: 3em;
+}
+.register-main .container form label {
+  color: white;
+}
+.register-main .container form p {
+  color: white;
+}/*# sourceMappingURL=registerstyle.css.map */

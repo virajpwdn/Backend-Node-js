@@ -1,0 +1,17 @@
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+}
+.login-container form input {
+  height: 4em;
+  margin-top: 1em;
+}/*# sourceMappingURL=loginstyle.css.map */
