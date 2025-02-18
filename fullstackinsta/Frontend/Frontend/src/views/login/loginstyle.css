@@ -14,4 +14,23 @@
 .login-container form input {
   height: 4em;
   margin-top: 1em;
+  padding: 1em;
+  border-radius: 0.3em;
+  outline: none;
+  border: none;
+}
+.login-container form label {
+  color: white;
+  margin-top: 1em;
+}
+.login-container form .login-submit-btn {
+  margin-top: 2em;
+  height: 3em;
+}
+.login-container form .login-submit-btn:active {
+  transform: scale(0.9);
+}
+.login-container form p {
+  color: white;
+  margin-top: 1em;
 }/*# sourceMappingURL=loginstyle.css.map */

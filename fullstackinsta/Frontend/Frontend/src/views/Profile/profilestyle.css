@@ -1,0 +1,28 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  padding: 6em;
+}
+.container .profile-img {
+  height: 6em;
+  width: 6em;
+  border-radius: 50%;
+  background-color: rebeccapurple;
+}
+.container .profile-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .post-container {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+}
+.container .post-container .post {
+  height: 18em;
+  width: 20em;
+  background-color: rebeccapurple;
+}/*# sourceMappingURL=profilestyle.css.map */
