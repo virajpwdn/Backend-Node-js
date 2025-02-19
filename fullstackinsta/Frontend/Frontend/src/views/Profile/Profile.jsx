@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import './profilestyle.css'
+import { useNavigate } from "react-router";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({});
   useEffect(() => {
+    // const token = localStorage.getItem("token");
+    // if(!token) navigate("/login");
+
     axios
       .get("http://localhost:3000/user/profile", {
         headers: { Authorization: "bearer " + localStorage.getItem("token") },
