@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   },
   posts:{
     type: mongoose.Schema.Types.ObjectId,
-    ref:"post"
+    ref:"post" /* Data Association This is called */
   }
 });
 

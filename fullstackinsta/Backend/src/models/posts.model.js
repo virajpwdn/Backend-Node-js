@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const profileSchema = new mongoose.Schema({
   media: {
     type: String,
+    required: true,
   },
-  status: {
+  caption: {
     type: String,
+    required: true,
   },
 });
 
 const profileModel = mongoose.model("post", profileSchema);
-module.exports = profileModel
+module.exports = profileModel;
