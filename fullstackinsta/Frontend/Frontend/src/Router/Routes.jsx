@@ -4,6 +4,7 @@ import Register from "../views/Register/Register";
 import Login from "../views/login/Login";
 import Profile from "../views/Profile/Profile";
 import Protected from "../components/protected";
+import Createpost from "../views/CreatePost/Createpost";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             </Protected>
           }
         />
+        <Route path="/createpost" element={<Protected><Createpost/></Protected>} />
       </Routes>
     </Router>
   );

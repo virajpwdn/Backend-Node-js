@@ -1,0 +1,28 @@
+.main {
+  height: 100vh;
+  width: 100vw;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main .container {
+  width: 50%;
+}
+.main form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.main form input {
+  height: 3em;
+  padding: 2em;
+}
+.main form label {
+  color: white;
+  font-size: 1em;
+}
+.main form button {
+  padding: 1em 3em;
+  margin-top: 1em;
+}/*# sourceMappingURL=createpoststyle.css.map */
