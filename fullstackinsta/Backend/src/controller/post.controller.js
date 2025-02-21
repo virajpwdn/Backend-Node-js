@@ -1,4 +1,5 @@
 const postModel = require("../models/posts.model");
+const userModel = require("../models/user.model");
 
 module.exports.postController = async (req, res) => {
   try {
@@ -10,6 +11,14 @@ module.exports.postController = async (req, res) => {
       media,
       caption,
     });
+
+    await userModel.findOneAndUpdate({
+      _id: req.user._id
+    }, {
+      $push:{
+        posts: newPost._id
+      }
+    })
     res.status(200).json({message: newPost})
   } catch (error) {
     res.status(400).json({message: error.message})

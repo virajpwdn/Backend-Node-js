@@ -40,9 +40,12 @@ module.exports.registerController = async (req, res) => {
 
 module.exports.profileController = async (req, res) => {
   try {
-    const user = req.user;
+    const user = req.user;  
 
-    res.status(200).json({ message: user });
+    const prevUser = await userModel.findOne({_id:user._id}).populate("posts")
+
+
+    res.status(200).json({ user:prevUser });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
