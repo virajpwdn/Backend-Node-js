@@ -1,9 +1,15 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const {signupController, findUserController, formController} = require('../controllers/controller')
+const {
+  signupController,
+  findUserController,
+  formController,
+  userIdDetails,
+} = require("../controllers/controller");
 
 router.post("/signup", signupController);
 router.get("/allusers", findUserController);
-router.get("/", formController)
+router.get("/allusers/:userId", userIdDetails);
+router.get("/", formController);
 
 module.exports = router;

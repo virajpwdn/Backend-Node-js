@@ -4,30 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Profiles</title>
     <style>
+        /* General Body Styling */
         body {
-            background-color: blue;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(22, 15, 38);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: #2b235a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Image Styling */
+        .profile-image {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Profile Content */
+        .profile-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .profile-content h1 {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: rgb(70, 172, 255);
+        }
+
+        .profile-content p {
+            margin: 0.3rem 0;
+            color: #ddd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-card {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <% findUserInDb.forEach(elem=> { %>
-            <img src="<%= elem.profileImg %>" alt="">
-            <h1>
-                <%= elem.userName %>
-            </h1>
-            <h1>
-                <%= elem.bio %>
-            </h1>
-            <h1>
-                <%= elem.email %>
-            </h1>
+            <a href="/allusers/<%= elem._id %>" class="profile-card">
+                <div class="profile-image">
+                    <img src="<%= elem.profileImg %>" alt="<%= elem.userName %>'s Profile Picture">
+                </div>
+                <div class="profile-content">
+                    <h1>
+                        <%= elem.userName %>
+                    </h1>
+                    <p>
+                        <%= elem.bio %>
+                    </p>
+                    <p>Email: <%= elem.email %>
+                    </p>
+                </div>
+            </a>
             <% }) %>
     </div>
-
 </body>
 
 </html>

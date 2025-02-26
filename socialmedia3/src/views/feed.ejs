@@ -127,7 +127,8 @@
             background-color: lightgreen;
             color: black;
         }
-        .likebtn button:hover{
+
+        .likebtn button:hover {
             backg
         }
     </style>
@@ -137,7 +138,7 @@
     <div class="container">
         <a href="/create-user-form" class="create-btn">Create User</a>
         <% alluser.forEach(elem=> { %>
-            <a class="card" href="/user/<%= elem._id %>">
+            <div class="card" href="/user/<%= elem._id %>">
                 <div class="top">
                     <img src="<%= elem.profileImage %>" alt="<%= elem.username %>'s profile picture">
                 </div>
@@ -151,36 +152,16 @@
                     <h2>
                         <%= elem.bio %>
                     </h2>
-                </div>
-            </a>
-            <% }) %>
-    </div>
-    <div class="container">
-        <a href="/create-user-form" class="create-btn">Create User</a>
-        <% alluser.forEach(elem=> { %>
-            <a class="card" href="/user/<%= elem._id %>">
-                <div class="top">
-                    <img src="<%= elem.profileImage %>" alt="<%= elem.username %>'s profile picture">
-                </div>
-                <div class="bottom">
-                    <h2>
-                        <%= elem.username %>
-                    </h2>
-                    <h2>
-                        <%= elem.email %>
-                    </h2>
-                    <h2>
-                        <%= elem.bio %>
-                    </h2>
-                    <div class="likebtn">
-                        <button>
-                            like
+                    <div class="like-btn-container">
+                        <button class="like-btn" data-id="<%= elem._id %>">
+                            Like <span class="like-count">0</span>
                         </button>
                     </div>
                 </div>
-            </a>
+            </div>
             <% }) %>
     </div>
+
 </body>
 
 </html>

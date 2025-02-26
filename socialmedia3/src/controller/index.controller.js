@@ -57,3 +57,7 @@ module.exports.userCreateController = async (req, res) => {
     console.log("ERROR: " + error.message);
   }
 };
+
+module.exports.likeCounter = async (req,res)=>{
+  // const id = req.params.
+}

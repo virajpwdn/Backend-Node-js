@@ -1,0 +1,4 @@
+Authentication -> user | admin
+Authorization -> their rights
+Validation -> data provided format right or wrong
+Verification -> provided data is correct or not
