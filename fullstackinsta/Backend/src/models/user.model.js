@@ -30,10 +30,10 @@ const userSchema = new mongoose.Schema({
   age: {
     type: Number,
   },
-  posts:{
+  posts:[{
     type: mongoose.Schema.Types.ObjectId,
     ref:"post" /* Data Association This is called */
-  }
+  }]
 });
 
 userSchema.methods.generateToken = function () {
@@ -52,5 +52,5 @@ userSchema.statics.verifyPassword = function (plainPassword, hashPassword) {
     return bcrypt.compare(plainPassword, hashPassword);
 }
 
-const userModel = mongoose.model("users", userSchema);
+const userModel = mongoose.model("user", userSchema);
 module.exports = userModel;

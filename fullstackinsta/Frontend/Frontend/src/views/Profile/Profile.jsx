@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import './profilestyle.css'
+import "./profilestyle.css";
 import { useNavigate } from "react-router";
 
 const Profile = () => {
@@ -21,20 +21,33 @@ const Profile = () => {
         console.log(error.response.data.error);
       });
   }, []);
-
+  console.log(data?.user?.posts[0].media);
   return (
-    <>
-      <div className="container">
-        <div className="profile-img"><img src={data.message?.photo || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29kaW5nfGVufDB8fDB8fHww"} alt="" /></div>
-        <h2 className="username">{data.message?.username}</h2>
-        <div className="post-container">
-          <div className="post"></div>
-          <div className="post"></div>
-          <div className="post"></div>
-          <div className="post"></div>
+    <div className="profile-container">
+      <div className="profile-header">
+        <div className="profile-img">
+          <img
+            src={
+              data?.user?.photo ||
+              "https://imgs.search.brave.com/5cAi-jXDh0PdCGuh2vvsggwMUWvGlmTFmbCQ7jYJ9OI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc"
+            }
+            alt="Profile"
+          />
+        </div>
+        <div className="profile-info">
+          <h2 className="username">{data?.user?.username}</h2>
+          <p className="bio">{data?.user?.bio || "No bio available"}</p>
         </div>
       </div>
-    </>
+
+      <div className="post-container">
+        {data?.user?.posts?.map((post, index) => (
+          <div key={index} className="post">
+            <img src={post.media} alt={`Post ${index}`} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
