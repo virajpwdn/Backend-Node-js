@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w-full min-h-screen bg-zinc-900 text-white p-10">
+        <button class="bg-red-500 px-2 py-2 text-sm rounded-md mb-3 cursor-pointer">Logout</button>
+        <h1 class="name font-semibold text-3xl">Hello, <%= user.firstName %>
+        </h1>
+        <p>You can create new <span class="text-blue-400">post</span></p>
+        <form action="/user/create-post" method="post">
+            <input class="w-1/3 my-4 block bg-transparent border-2 rounded-md border-zinc-600 p-2 outline-none"
+                type="text" placeholder="Title" name="title">
+            <textarea
+                class="w-1/3 block resize-none bg-transparent border-2 rounded-md border-zinc-600 p-3 outline-none"
+                placeholder="what's on your mind" name="content"></textarea>
+            <input type="submit" value="create post" class="mt-5 px-4 py-2 cursor-pointer bg-emerald-600 rounded-md">
+        </form>
+
+
+        <div class="allposts-container mt-20">
+            <p>Your Posts</p>
+            <% posts.posts.reverse().forEach(post=> { %>
+                <div class="bg-transparent border-2 border-zinc-600 mb-5 p-5 w-1/3">
+                    <div class="text-xl font-semibold">
+                        <%= post.title %>
+                    </div>
+                    <div class="text-sm text-zinc-200">
+                        <%= post.content %>
+                    </div>
+                    <p class="text-sm mt-4">
+                        <%= post.likes.length %> likes
+                    </p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="/user/likes/<%= post._id %>"> <button
+                                class="bg-red-400 px-2 py-1 text-sm rounded-full">
+                                <%= post.likes.indexOf(user._id)===-1? "like" : "unlike" %>
+                            </button></a>
+                        <a href="/user/edit/view/<%= post._id %>">
+                            <button class="bg-teal-400 px-2 py-1 text-sm rounded-full text-black">Edit</button>
+                        </a>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

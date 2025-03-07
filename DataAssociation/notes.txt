@@ -1,0 +1,2 @@
+Multer is used for file management, it is used to upload files.
+multer will not process any form which is not multipart/form data
