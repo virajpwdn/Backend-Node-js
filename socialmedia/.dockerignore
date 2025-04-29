@@ -1,0 +1,10 @@
+#Node Modules
+node_modules
+
+#Environment variables
+.env
+
+#Ignore git files
+.git
+.gitignore
+Dockerfile.old
